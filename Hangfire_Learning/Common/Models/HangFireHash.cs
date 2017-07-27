@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+
+
+namespace Common.Models
+{
+ 
+ 
+    public class HangFireHash
+    {
+    
+        public int Id { get; set; }
+
+        public string Key { get; set; }
+
+        public string Field { get; set; }
+
+        public string Value { get; set; }
+
+        public DateTime? ExpireAt { get; set; }
+    }
+}

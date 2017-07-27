@@ -1,0 +1,51 @@
+﻿
+@model Common.Models.ScheduleModel
+
+
+    @{
+        ViewBag.Title = "Update";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+
+    <h2>Updatev Schedule</h2>
+
+
+    @using (Html.BeginForm("Modify", "Schedule"))
+    {
+        <table width="500">
+            <tr>
+                <td width="200">Job ID</td>
+                <td>
+                    @Model.Id
+                    <input type="hidden" id="id" name="id" value="@Model.Id" />
+                </td>
+            </tr>
+            <tr>
+                <td>Cron</td>
+                <td><input type="text" id="cron" name="cron" value="@Model.Cron" /></td>
+            </tr>
+            <tr>
+                <td>Queue</td>
+                <td><input type="text" id="queue" name="queue" value="@Model.Queue" /></td>
+            </tr>
+            <tr>
+                <td>CreateAt</td>
+                <td>@Model.CreateAt</td>
+            </tr>
+            <tr>
+                <td>Next Execution</td>
+                <td>@Model.NextExec</td>
+            </tr>
+            <tr>
+                <td>Disabled</td>
+                <td><input id="disabled" name="disabled" type="checkbox" checked="@Model.Disabled"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" />
+                </td>
+            </tr>
+        </table>
+    }

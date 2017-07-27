@@ -1,0 +1,52 @@
+﻿@model WebDEMO.Repositories.QuestionModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Index</h2>
+
+<P>@Model.Question</p>
+<ul>
+    @foreach (var op in Model.Options)
+    {
+        <li>
+            @op  
+            @Html.ActionLink("Vote", "Vote", new { key = op })
+        </li>
+    }
+</ul>
+
+<div>
+  @if(@Model.Buckets!=null)
+  {
+      <h4>Aggregation:</h4>
+    <ul>
+        @foreach (var item in Model.Buckets)
+        {
+            <li>
+                @item.Key : @item.Value
+            </li>
+        }
+    </ul>
+    <p>Last update: @Model.LastBucketingTime</p>
+  }
+</div>
+
+<div>
+ @if (Model.Percentage != null)
+ {
+     <h4>Percentage:</h4>
+     <ul>
+         @foreach (var item in Model.Percentage)
+         {
+             <li>
+                 @item.Key : @(item.Value * 100) %
+             </li>
+         }
+     </ul>
+    <p>Last update: @Model.LastPercentageTime</p>
+ }
+</div>
+

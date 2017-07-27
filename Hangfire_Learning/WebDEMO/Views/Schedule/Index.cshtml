@@ -1,0 +1,36 @@
+﻿@using Common.Models
+
+@model List<Common.Models.ScheduleModel>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Schedules</h2>
+
+    @if (Model != null)
+    {
+        <table width="800">
+        <tr>
+            <td>ID</td>
+            <td>Cron</td>
+            <td>Queue</td>
+            <td>CreateAt</td>
+            <td>Next Exection</td>
+            <td>Disabled</td>
+            <td></td>
+        </tr>
+            @foreach (ScheduleModel item in Model)
+            {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Cron</td>
+                <td>@item.Queue</td>
+                <td>@item.CreateAt</td>
+                <td>@item.NextExec</td>
+                <td>@item.Disabled</td>
+                <td>@Html.ActionLink("Update","Update", new { id=item.Id.Replace(".","___")})</td>
+            </tr>
+            }
+        </table>
+    }
